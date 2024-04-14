@@ -26,6 +26,7 @@ docker exec -it id_контейнера sh -c "cd test && go test"
 ```
 ## Дополнительно:
 - Конфигурация линтеров описана здесь: [golangci.yml](golangci.yml)
+- Дополнительные тесты для других эндпоинтов в папке test
 - Результаты нагрузочного тестирования (15 c) здесь: ![](vegeta-plot.png) или здесь ![](results.png) Выполнено с помощью Vegeta для 5 запросов по всем эндпоинтам. Список запросов можно посмотреть здесь: [target.list](target.list) Чтобы запустить тестирование:
 ```
 vegeta attack -duration=15s -rate=100 -targets=target.list -output=result.bin
@@ -38,7 +39,6 @@ vegeta plot -title='Нагрузочное тестирование' result.bin 
 ```
 vegeta report result.bin
 ```
-Дополнительные тесты для других эндпоинтов в папке test
 ## Запросы: 
 Для /user_banner (получение баннера для пользователя):
 - Баннер получен:
