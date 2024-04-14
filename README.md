@@ -26,9 +26,9 @@ docker exec -it id_контейнера sh -c "cd test && go test"
 ```
 ## Дополнительно:
 - Конфигурация линтеров описана здесь: [golangci.yml](golangci.yml)
-- Результаты нагрузочного тестирования (120 c) здесь: [results.html](results.html) или здесь ![](results.png) Выполнено с помощью Vegeta для 5 запросов по всем эндпоинтам. Список запросов можно посмотреть здесь: [target.list](target.list) Чтобы запустить тестирование:
+- Результаты нагрузочного тестирования (15 c) здесь: [results.html](results.html) или здесь ![](results.png) Выполнено с помощью Vegeta для 5 запросов по всем эндпоинтам. Список запросов можно посмотреть здесь: [target.list](target.list) Чтобы запустить тестирование:
 ```
-vegeta attack -duration=120s -rate=100 -targets=target.list -output=result.bin
+vegeta attack -duration=15s -rate=100 -targets=target.list -output=result.bin
 ```
 Чтобы получить html-отчет:
 ```
