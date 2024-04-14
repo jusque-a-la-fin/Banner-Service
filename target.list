@@ -1,0 +1,19 @@
+GET http://localhost:8080/user_banner?tag_id=2&feature_id=1&use_last_revision=false 
+Token: user_token
+
+GET http://localhost:8080/banner?&limit=7&offset=1 
+Token: admin_token
+
+POST http://localhost:8080/banner 
+Token: admin_token
+Content-Type: application/json
+@post.json
+
+PATCH http://localhost:8080/banner/1 
+Token: user_token
+Content-Type: application/json
+@update.json
+
+DELETE http://localhost:8080/banner/1
+Token: admin_token
+Content-Type: application/json

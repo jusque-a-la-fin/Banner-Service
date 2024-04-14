@@ -1,0 +1,45 @@
+version: '3'
+services:
+  postgres1:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: banner
+      POSTGRES_DB: token_storage
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./sql/token_storage:/docker-entrypoint-initdb.d
+
+  postgres2:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: banner
+      POSTGRES_DB: banner_service
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./sql/banner_service:/docker-entrypoint-initdb.d
+
+  redis:
+    image: redis
+    ports:
+      - "6380:6379"
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres1
+      - postgres2
+      - redis
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: banner
+      POSTGRES_HOST1: postgres1
+      POSTGRES_HOST2: postgres2
+      POSTGRES_PORT: 5432
+      POSTGRES_DB1: token_storage
+      POSTGRES_DB2: banner_service
+      REDIS_ADDR: redis:6379
