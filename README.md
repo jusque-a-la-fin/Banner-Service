@@ -27,7 +27,7 @@ docker exec -it id_контейнера sh -c "cd test && go test"
 ## Дополнительно:
 - Конфигурация линтеров описана здесь: [golangci.yml](golangci.yml)
 - Дополнительные тесты для других эндпоинтов, не только для /user_banner в папке [test](https://github.com/jusque-a-la-fin/Banner-Service/tree/main/test)
-- Результаты нагрузочного тестирования c помощью vegeta для /user_banner при RPS=1000 и 120 сек: Success=100%, latency менее 22 ms: 
+- Результаты нагрузочного тестирования c помощью vegeta для /user_banner при RPS=1000 и 120 сек: Success=100%, Latency менее 22 ms: 
 ![](vegeta.png)
 ![](result.png)
 Чтобы запустить тестирование для /user_banner:
