@@ -27,17 +27,17 @@ docker exec -it id_контейнера sh -c "cd test && go test"
 ## Дополнительно:
 - Конфигурация линтеров описана здесь: [golangci.yml](golangci.yml)
 - Дополнительные тесты для других эндпоинтов, не только для /user_banner в папке test
-- Результаты нагрузочного тестирования (15 c) здесь: ![](vegeta-plot.png) или здесь ![](results.png) Выполнено с помощью Vegeta для 5 запросов по всем эндпоинтам. Список запросов можно посмотреть здесь: [target.list](target.list) Чтобы запустить тестирование:
+- Результаты нагрузочного тестирования c помощью vegeta для /user_banner при RPS=1000 и 120 сек: Success=100%, latency менее 22 ms: 
+![](vegeta.png)
+![](result.png)
+Чтобы запустить тестирование для /user_banner:
 ```
-vegeta attack -duration=15s -rate=100 -targets=target.list -output=result.bin
+echo "GET http://localhost:8080/user_banner?tag_id=2&feature_id=1&use_last_revision=false" | vegeta attack -header="token: user_token" -rate=1000/s -duration=120s | tee result.bin | vegeta report
 ```
-Чтобы получить html-отчет:
+
+Получить html-отчет:
 ```
-vegeta plot -title='Нагрузочное тестирование' result.bin > results.html
-```
-Чтобы получить отчет в формате json:
-```
-vegeta report result.bin
+vegeta plot -title='Нагрузочное тестирование' result.bin > result.html
 ```
 ## Запросы: 
 Для /user_banner (получение баннера для пользователя):
