@@ -1,4 +1,5 @@
 # Banner Service
+Описание задачи: https://github.com/avito-tech/backend-trainee-assignment-2024
 ## Как запустить:
 ```bash
 git clone https://github.com/jusque-a-la-fin/Banner-Service.git && cd Banner-Service && docker-compose up
